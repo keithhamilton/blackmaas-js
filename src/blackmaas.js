@@ -19,10 +19,10 @@
 
 }(this, function(){
     var Blackmaas = function(ipsum,images){
-        var replace_ipsum = ipsum;
-        var replace_images = images;
+        var replace_ipsum = ipsum === true ? ipsum : false;
+        var replace_images = images === true ? images : false;
 
-        var IpsumNode = function(node){
+        var _IpsumNode = function(node){
             var _node = node;
             // get paragraph count from node attribute data-paragraph-count
             var _nParagraphs = _node.getAttribute('data-paragraph-count') || 4;
@@ -33,11 +33,11 @@
             // get enochian weight from node attribute data-enochian-weight
             var _enochianWeight = _node.getAttribute('data-enochian-weight') || 1;
             
-            var data = "p="+_nParagraphs+"&sentence_variance="+_sentenceVariance+"&include_enochian="+_includeEnochian+"&enochian_weight="+_enochianWeight;
+            var _data = "p="+_nParagraphs+"&sentence_variance="+_sentenceVariance+"&include_enochian="+_includeEnochian+"&enochian_weight="+_enochianWeight;
 
-            var getIpsum = function(){
+            var _getIpsum = function(){
                 var xhr = new XMLHttpRequest();
-                xhr.open('GET','http://blackmaas.com/ipsum/generate?'+data,true);
+                xhr.open('GET','http://blackmaas.com/ipsum/generate?'+_data,true);
                 xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
                 xhr.onreadystatechange=function() {
                     if (xhr.readyState==4 && xhr.status==200){
@@ -47,21 +47,21 @@
                 xhr.send();
             }
             return {
-                getIpsum: getIpsum
+                getIpsum: _getIpsum
             }
         }
 
-        var ipsum = function(){
+        var _ipsum = function(){
             var nodes = document.getElementsByClassName('satan-ipsum')
             var node_length = nodes.length;
             while(node_length > 0){
-                var _node = new IpsumNode(nodes[node_length-1]);
+                var _node = new _IpsumNode(nodes[node_length-1]);
                 _node.getIpsum();
                 node_length--;
             }
         }
 
-        var images = function(){
+        var _images = function(){
             var nodes = document.getElementsByClassName('satan-image')
             var node_length = nodes.length;
             while(node_length > 0){
@@ -77,17 +77,17 @@
             }
         }
 
-        var hailSatan = function(){
+        var _hailSatan = function(){
             if(replace_ipsum){
-                ipsum();
+                _ipsum();
             }
             if(replace_images){
-                images();
+                _images();
             }
         }
         
         return {
-            hailSatan: hailSatan
+            hailSatan: _hailSatan
         }
 
     }
