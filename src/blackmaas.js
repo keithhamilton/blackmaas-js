@@ -2,8 +2,23 @@
  * from blackmaas.com into HTML elements that have the appropriate class
  */
 
-window.Blackmaas = (function(){
-    var _Blackmaas = function(ipsum,images){
+(function(base, factory) {
+
+    // RequireJS
+    if (typeof define === "function" && define.amd) {
+        define(factory);
+
+    // CommonJS
+    } else if (typeof exports === "object") {
+          module.exports = factory();
+
+    // Global Space
+    } else {
+        base.Blackmaas = factory();
+    }
+
+}(this, function(){
+    var Blackmaas = function(ipsum,images){
         var replace_ipsum = ipsum;
         var replace_images = images;
 
@@ -76,5 +91,5 @@ window.Blackmaas = (function(){
         }
 
     }
-    return _Blackmaas;
-})()
+    return Blackmaas;
+}));
