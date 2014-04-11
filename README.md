@@ -6,9 +6,9 @@ So you like Black Metal as a Service, but don't want to have to programmatically
 Now you can load in content on the fly by adding markup to your DOM, and adding a few lines of javascript.  This javascript component just levrages the standard Blackmaas API, documentation for which can be found [here](http://blackmaas.com/api)
 
 ##How to BlackMaas your site  
-1.Add this to the head of your document:  
+1.Download this repo, put the script into your scripts folder and add it to the head of your document:  
 
-```<script src='https://raw.githubusercontent.com/keithhamilton/blackmaas-js/master/src/blackmaas.js' type='text/javascript'></script>```  
+```<script src='[path-to-scripts]/blackmaas.js' type='text/javascript'></script>```  
 
 2.In an inline script tag, or another code file:  
 
