@@ -65,6 +65,7 @@
             var nodes = document.getElementsByClassName('satan-image')
             var node_length = nodes.length;
             var images=['pentagram','skull','blackmaas','baphomet'];
+            var colors=['black','blood'];
             while(node_length > 0){
                 var _node = nodes[node_length-1];
                 node_length--;
@@ -74,8 +75,10 @@
                 var _height = _node.getAttribute('data-image-height') || 500;
                 // get a random image
                 var _image = images[Math.floor((Math.random()*images.length)+1)-1];
+                // get a random color
+                var _color = Math.floor((Math.random()*2)+1) % 2 === 0 ? 'black' : 'blood';
 
-                var data = "width="+_width+"&height="+_height+"&image="+_image;
+                var data = "width="+_width+"&height="+_height+"&image="+_image+"&color="+_color;
                 _node.src="http://blackmaas.com/image/generate?"+data;
             }
         }
