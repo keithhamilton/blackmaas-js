@@ -87,10 +87,12 @@
 
         var _setColor = function(color){
             image_color = color;
+            return this;
         }
 
         var _setImage = function(image){
             image_choice = image;
+            return this;
         }
 
         var _hailSatan = function(){
