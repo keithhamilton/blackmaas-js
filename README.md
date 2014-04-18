@@ -3,7 +3,7 @@ blackmaas-js
 
 So you like Black Metal as a Service, but don't want to have to programmatically make API calls to populate your website with placeholder content?  
 
-Now you can load in content on the fly by adding markup to your DOM, and adding a few lines of javascript.  This javascript component just levrages the standard Blackmaas API, documentation for which can be found at [http://blackmaas.com/api](http://blackmaas.com/api)
+Now you can load in content on the fly by adding markup to your DOM, and adding a few lines of javascript.  This javascript component just leverages the standard Blackmaas API, documentation for which can be found at [http://blackmaas.com/api](http://blackmaas.com/api).
 
 ##How to BlackMaas your site  
 Download this repo, put the script into your scripts folder and add it to the head of your document:  
