@@ -19,8 +19,8 @@
 
 }(this, function(){
     var Blackmaas = function(ipsum,images){
-        var replace_ipsum = ipsum === true ? ipsum : false;
-        var replace_images = images === true ? images : false;
+        var replace_ipsum = ipsum === false ? false : true;
+        var replace_images = images === false ? false : true;
         var image_color = null;
         var image_choice = null;
 
