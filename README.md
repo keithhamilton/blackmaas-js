@@ -6,18 +6,24 @@ So you like Black Metal as a Service, but don't want to have to programmatically
 Now you can load in content on the fly by adding markup to your DOM, and adding a few lines of javascript.  This javascript component just levrages the standard Blackmaas API, documentation for which can be found [here](http://blackmaas.com/api)
 
 ##How to BlackMaas your site  
-1.Download this repo, put the script into your scripts folder and add it to the head of your document:  
+Download this repo, put the script into your scripts folder and add it to the head of your document:  
 
-```<script src='[path-to-scripts]/blackmaas.js' type='text/javascript'></script>```  
+```<script src='[path-to-scripts]/blackmaas.min.js' type='text/javascript'></script>```  
 
-2.In an inline script tag, or another code file:  
+In an inline script tag, or another code file:  
 
 ```
-var replace_ipsum=true;
-var replace_images=true;
-var blackmaas = new Blackmaas(replace_ipsum,replace_images);
+var blackmaas = new Blackmaas();
 blackmaas.hailSatan();
 ```
+
+Optionally, you can set a global color or image type:
+
+```
+var blackmaas = new Blackmaas();
+blackmaas.setImage('skull').setColor('black').hailSatan();
+```
+The global color and image type will override any markup you add (see Image options below).
 
 Now, all you need is some additional markup. Here's how you convert an element into a Satan Ipsum block:
 
@@ -36,9 +42,11 @@ This: ```<img/>``` becomes ```<img class='satan-image/>```
 #####Options
 The satan-image tag has two available markup options:  
 * data-image-width: **the image width**  
-* data-image-height: **the image height**
+* data-image-height: **the image height**  
+* data-image-type: **the image type ('pentagram', 'baphomet', 'skull', 'blackmaas')**  
+* data-image-color: **the image color ('black','blood')**
 
 ##Example
-See the example HTML file in the example folder to see this in action.
+See the example HTML file [here](https://github.com/keithhamilton/blackmaas-js/blob/master/example/index.html) to see this in action.
 
 
