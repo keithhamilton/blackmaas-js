@@ -69,16 +69,24 @@
             var images=['pentagram','skull','blackmaas','baphomet'];
             var colors=['black','blood'];
             while(node_length > 0){
+                var _image_choice = image_choice;
+                var _image_color = image_color;
                 var _node = nodes[node_length-1];
                 node_length--;
                 //get image width from node attribute data-image-width
                 var _width = _node.getAttribute('data-image-width') || 350;
                 // get image height from node attribute data-image-height
                 var _height = _node.getAttribute('data-image-height') || 500;
-                // get a random image
-                var _image = image_choice ? image_choice : images[Math.floor((Math.random()*images.length)+1)-1];
-                // get a random color
-                var _color = image_color ? image_color : Math.floor((Math.random()*2)+1) % 2 === 0 ? 'black' : 'blood';
+                // get an image. if an image is defined by a data attribute, use that.
+                // if not, use the global image type.
+                // if no global image type was defined, pick one at random
+                _image_choice = _node.getAttribute('data-image-type') ? _node.getAttribute('data-image-type') : _image_choice;
+                var _image = _image_choice ? _image_choice : images[Math.floor((Math.random()*images.length)+1)-1];
+                // get a color. if a color is defined by a data attribute, use that.
+                // if not, use the global color type
+                // if no global color type was defined, pick one at random
+                _image_color = _node.getAttribute('data-image-color') ? _node.getAttribute('data-image-color') : _image_color;
+                var _color = _image_color ? _image_color : Math.floor((Math.random()*2)+1) % 2 === 0 ? 'black' : 'blood';
 
                 var data = "width="+_width+"&height="+_height+"&image="+_image+"&color="+_color;
                 _node.src="http://blackmaas.com/image/generate?"+data;
