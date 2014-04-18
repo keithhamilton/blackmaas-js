@@ -21,6 +21,8 @@
     var Blackmaas = function(ipsum,images){
         var replace_ipsum = ipsum === true ? ipsum : false;
         var replace_images = images === true ? images : false;
+        var image_color = null;
+        var image_choice = null;
 
         var _IpsumNode = function(node){
             var _node = node;
@@ -74,13 +76,21 @@
                 // get image height from node attribute data-image-height
                 var _height = _node.getAttribute('data-image-height') || 500;
                 // get a random image
-                var _image = images[Math.floor((Math.random()*images.length)+1)-1];
+                var _image = image_choice ? image_choice : images[Math.floor((Math.random()*images.length)+1)-1];
                 // get a random color
-                var _color = Math.floor((Math.random()*2)+1) % 2 === 0 ? 'black' : 'blood';
+                var _color = image_color ? image_color : Math.floor((Math.random()*2)+1) % 2 === 0 ? 'black' : 'blood';
 
                 var data = "width="+_width+"&height="+_height+"&image="+_image+"&color="+_color;
                 _node.src="http://blackmaas.com/image/generate?"+data;
             }
+        }
+
+        var _setColor = function(color){
+            image_color = color;
+        }
+
+        var _setImage = function(image){
+            image_choice = image;
         }
 
         var _hailSatan = function(){
@@ -93,7 +103,9 @@
         }
         
         return {
-            hailSatan: _hailSatan
+            hailSatan: _hailSatan,
+            setColor: _setColor,
+            setImage: _setImage
         }
 
     }
